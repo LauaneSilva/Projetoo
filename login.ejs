@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Usuario</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+<div class="container">
+    <div>
+        <div>
+        <% if (status ==1) { %>
+                <div style = "background-color: rgb(190, 13, 13);">E-mail e/senha inválido(s)!</div>
+            <% } %>
+        
+    <h4>Login Usuario</h4>
+    <form action="/usuarios/login" method="post">
+        <input type = "hidden" name="_id" value="<%=usuario._id %>">
+        <div class="mb-3">
+            <label class="form-label" >EMAIL:</label> 
+            <input type="email"  class="form-control" name="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" >SENHA:</label> 
+            <input type="password" <%if(usuario.senha != undefined){%> disabled <%} %> class="form-control" name="senha">
+        </div>
+       
+    <input type="submit" class="btn btn-primary" value="Login">
+   
+    <a href = "/">
+
+    </form>
+</div>
+</body>
+
+<%- include("../partials/rodape.ejs") %>
+</html>
+</body>

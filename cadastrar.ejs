@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro De Usuarios</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+<div class="container">
+    <div>
+        <div>
+        <% if (status ==1) { %>
+                <div style = "background-color: rgb(190, 13, 13);">E-mail já utilizado</div>
+            <% } %>
+        
+    <h4>Cadastrar Usuarios</h4>
+    <form action="/usuarios" method="post">
+        <input type = "hidden" name="_id" value="<%=usuario._id %>">
+        <div class="mb-3">
+            <label class="form-label" >EMAIL:</label> 
+            <input type="email" value="<%=usuario.email %>" class="form-control" name="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" >SENHA:</label> 
+            <input type="password" <%if(usuario.senha != undefined){%> disabled <%} %> value="<%=usuario.senha %>" class="form-control" name="senha">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" >NOME:</label> 
+            <input type="text" value="<%=usuario.nome %>" class="form-control" name="nome">
+        </div>
+        
+    <input type="submit" class="btn btn-primary" value="Salvar">
+   
+    <a href = "/">
+
+        <input type="button" class="btn btn-primary" value="<<Voltar"></a>
+    </form>
+</div>
+</body>
+
+<%- include("../partials/rodape.ejs") %>
+</html>
+</body>

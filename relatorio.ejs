@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %><br>
+    </head>
+<body>
+    <div>
+    <% if (status ==1) { %>
+        <div style = "background-color: rgb(144, 238, 144);">Usuario Cadastrado Com Sucesso</div>
+    <% } %>
+    <div>
+        <% if (status ==2) { %>
+            <div style = "background-color: rgb(190, 13, 13);">Usuario Removido Com Sucesso</div>
+        <% } %>
+    
+<br>
+<table class="table table-striped">
+    <th>NOME</th>
+    <th>EMAIL</th>
+    <th>DETALHAR</th>
+    <th>ATUALIZAR</th>
+    <th>REMOVER</th>
+    
+    <% for( const usuario of vetorUsuarios ) { %>
+        <tr>
+        <td><%= usuario.nome %></td>
+        <td><%= usuario.email %></td>
+
+<td>
+     <a type="button" class="btn btn-primary" href="/usuarios/<%= usuario._id %>">Detalhes</a>
+  </td>
+  <td>
+    <a type="button" class="btn btn-primary" href="/usuarios/cadastrar/<%= usuario._id %>">Atualizar</a>
+ </td>
+  <td>
+<a type="button" class="btn btn-danger" onclick="return confirm ('Deseja realmente remover? ')"href="/usuarios/remover/<%= usuario._id %>">Remover</a>
+</td>
+
+</tr>
+    <% } %>
+
+</table>
+    <a href ="/">
+        <input type="button" class="btn btn-secondary" value="<<Voltar"/></a>
+        
+    <%- include("../partials/rodape.ejs") %>
+</body>
+</html>
